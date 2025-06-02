@@ -18,11 +18,11 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17' # Adjust the version to match your project requirements
-      - name: Build with Maven
-        run: mvn clean compile
+      - name: Build with Ant
+        run: ant
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          args: -Dsonar.java.binaries=target/classes
+          args: -Dsonar.java.binaries=build
